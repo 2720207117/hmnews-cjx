@@ -10,7 +10,7 @@
 
 <style lang="less" scoped>
   .box {
-    width: 300px;
+    width: 700px;
     height: 100px;
     background: yellow;
   }
