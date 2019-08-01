@@ -23,7 +23,8 @@
           placeholder="请输入验证码"
           required
         />
-        <van-button type="info">登录</van-button>
+        <!-- 事件名.修饰符  prevent 阻止默认行为(防止点击按钮后页面跳转) -->
+        <van-button type="info"  @click.prevent="handleLogin">登录</van-button>
       </van-cell-group>
     </form>
 
@@ -31,14 +32,31 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'LoginIndex',
   data () {
     return {
       user: {
-        mobile: null,
-        code: null
+        mobile: '18801185985',
+        code: '246810'
       }
+    }
+  },
+  methods: {
+    async handleLogin () {
+      console.log(' ---- ')
+      const req = await axios({
+        method: 'post',
+        url: 'http://ttapi.research.itcast.cn/app/v1_0/authorizations',
+        data: this.user
+        // {
+        //   mobile: this.user.mobile,  // string格式
+        //   code: this.user.code       // string格式
+        // }
+      })
+      console.log(req)
     }
   }
 }
