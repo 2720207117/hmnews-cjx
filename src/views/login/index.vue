@@ -32,7 +32,8 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
+import request from '@/utils/request.js' // 导入封装的request请求模块
 
 export default {
   name: 'LoginIndex',
@@ -46,10 +47,9 @@ export default {
   },
   methods: {
     async handleLogin () {
-      console.log(' ---- ')
-      const req = await axios({
+      const req = await request({
         method: 'post',
-        url: 'http://ttapi.research.itcast.cn/app/v1_0/authorizations',
+        url: '/app/v1_0/authorizations',
         data: this.user
         // {
         //   mobile: this.user.mobile,  // string格式
