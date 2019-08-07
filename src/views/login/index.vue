@@ -51,7 +51,8 @@ export default {
     async handleLogin () {
       const res = await login(this.user)
       console.log(res)
-      setUser(res.token) // 将token存储到本地
+      // setUser(res.token) // 将token存储到本地
+      // 问题：token使用次数和位置？  // 使用Vuex
     }
   }
 }

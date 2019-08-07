@@ -1,16 +1,12 @@
-import Vue from 'vue'
+// 该模块是用于配置
+
+import Vue from 'Vue'
 import Vuex from 'vuex'
-
 Vue.use(Vuex)
-
-export default new Vuex.Store({
-  state: {
-
-  },
-  mutations: {
-
-  },
-  actions: {
-
-  }
+const store = new Vuex.Store({
+  state: {},
+  mutations: {},
+  actions: {}
 })
+
+export default store
