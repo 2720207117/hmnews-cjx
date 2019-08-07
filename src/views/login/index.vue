@@ -33,8 +33,9 @@
 
 <script>
 // import axios from 'axios'
-import request from '@/utils/request.js' // 导入封装的request请求模块
+// import request from '@/utils/request.js' // 导入封装的request请求模块
 import { login } from '@/api/user.js' // 接收者是一个对象 使用的是对象中的某一个方法 此处结构 {login}
+import { setUser } from '@/utils/auth.js'
 
 export default {
   name: 'LoginIndex',
@@ -48,8 +49,9 @@ export default {
   },
   methods: {
     async handleLogin () {
-      const data = await login(this.user)
-      console.log(data)
+      const res = await login(this.user)
+      console.log(res)
+      setUser(res.token) // 将token存储到本地
     }
   }
 }
