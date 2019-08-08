@@ -1,9 +1,9 @@
-// 将token进行本地存储
+// 将token进行本地存储,向外部提供对应的方法
 // localStorage
 
 const TOKEN_KEY = 'token'
 // 设置值
-export const setUser = (data) => {
+export const setUser = data => {
   window.localStorage.setItem(TOKEN_KEY, JSON.stringify(data))
 }
 

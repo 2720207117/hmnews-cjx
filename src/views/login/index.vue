@@ -35,7 +35,8 @@
 // import axios from 'axios'
 // import request from '@/utils/request.js' // 导入封装的request请求模块
 import { login } from '@/api/user.js' // 接收者是一个对象 使用的是对象中的某一个方法 此处结构 {login}
-import { setUser } from '@/utils/auth.js'
+// import { setUser } from '@/utils/auth.js'
+import { mapMutations } from 'vuex'
 
 export default {
   name: 'LoginIndex',
@@ -48,11 +49,20 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(['setUser']),
     async handleLogin () {
-      const res = await login(this.user)
-      console.log(res)
+      // const res = await login(this.user)
+      // console.log(res)
       // setUser(res.token) // 将token存储到本地
       // 问题：token使用次数和位置？  // 使用Vuex
+
+      try {
+        const data = await login(this.user) // 发送登录请求 返回用户信息
+        console.log(data) // data里面有token信息
+        this.setUser(data)
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
 }
